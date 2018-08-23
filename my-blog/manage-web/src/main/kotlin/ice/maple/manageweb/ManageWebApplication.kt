@@ -1,4 +1,4 @@
-package ice.maple.manageservice
+package ice.maple.manageweb
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -8,8 +8,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableEurekaClient
-open class ManageServiceApplication
+open class ManageWebApplication
 
-fun main(args:Array<String>){
-    SpringApplication.run(ManageServiceApplication::class.java,*args)
+fun main(args: Array<String>) {
+    SpringApplication.run(ManageWebApplication::class.java, *args)
 }
