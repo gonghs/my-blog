@@ -1,3 +1,2 @@
-info:
-  name: maple
-  sex: man
+webConfig:
+  defaultServiceInstanceId: manage-service
