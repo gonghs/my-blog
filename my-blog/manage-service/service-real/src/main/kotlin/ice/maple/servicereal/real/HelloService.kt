@@ -1,4 +1,4 @@
-package ice.maple.manageservice.service.impl
+package ice.maple.servicereal.real
 
 import ice.maple.manageservice.service.IHelloService
 import org.springframework.stereotype.Service

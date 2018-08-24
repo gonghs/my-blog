@@ -8,6 +8,8 @@
       <module fileurl="file://$PROJECT_DIR$/manage-service/manage-service.iml" filepath="$PROJECT_DIR$/manage-service/manage-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/manage-web/manage-web.iml" filepath="$PROJECT_DIR$/manage-web/manage-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/my-blog.iml" filepath="$PROJECT_DIR$/my-blog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manage-service/service-real/service-real.iml" filepath="$PROJECT_DIR$/manage-service/service-real/service-real.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manage-service/service-facade/servicefacade.iml" filepath="$PROJECT_DIR$/manage-service/service-facade/servicefacade.iml" />
     </modules>
   </component>
 </project>

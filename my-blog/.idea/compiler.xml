@@ -9,8 +9,9 @@
         <module name="common-utils" />
         <module name="config-server" />
         <module name="eureka-server" />
-        <module name="manage-service" />
         <module name="manage-web" />
+        <module name="service-real" />
+        <module name="servicefacade" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,6 +21,8 @@
       <module name="manage-service" target="1.8" />
       <module name="manage-web" target="1.8" />
       <module name="my-blog" target="1.8" />
+      <module name="service-real" target="1.8" />
+      <module name="servicefacade" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

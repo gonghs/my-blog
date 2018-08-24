@@ -6,6 +6,9 @@
     <file url="file://$PROJECT_DIR$/config-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/manage-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/manage-service/service-facade" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/manage-service/service-facade" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/manage-service/service-real" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/manage-web" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>

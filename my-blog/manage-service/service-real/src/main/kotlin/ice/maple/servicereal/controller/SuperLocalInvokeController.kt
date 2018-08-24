@@ -1,4 +1,4 @@
-package ice.maple.manageservice.controller
+package ice.maple.servicereal.controller
 
 import ice.maple.utils.SerializeUtils
 import org.apache.commons.lang.ArrayUtils

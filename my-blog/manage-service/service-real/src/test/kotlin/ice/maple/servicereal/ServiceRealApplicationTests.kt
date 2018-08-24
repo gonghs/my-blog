@@ -1,4 +1,4 @@
-package ice.maple.manageservice
+package ice.maple.servicereal
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @SpringBootTest
-class ManageServiceApplicationTests {
+class ServiceRealApplicationTests {
     @Value("\${info.name}")
     private val name:String? = null
     @Value("\${info.sex}")

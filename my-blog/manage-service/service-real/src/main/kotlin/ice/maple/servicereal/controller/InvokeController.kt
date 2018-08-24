@@ -1,4 +1,4 @@
-package ice.maple.manageservice.controller
+package ice.maple.servicereal.controller
 
 import org.springframework.web.bind.annotation.RestController
 
