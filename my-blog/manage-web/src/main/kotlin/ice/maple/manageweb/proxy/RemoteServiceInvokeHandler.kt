@@ -9,17 +9,11 @@ import org.springframework.web.client.RestTemplate
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method
 
-open class RemoteServiceInvokeHandler : InvocationHandler {
+open class RemoteServiceInvokeHandler(portType: Class<*>, restTemplate: RestTemplate, appId: String) : InvocationHandler {
     protected val log = LogFactory.getLog(this.javaClass)
-    private var portType: Class<*>? = null
-    private var restTemplate: RestTemplate? = null
-    private var application: String? = null
-
-    constructor(portType: Class<*>, restTemplate: RestTemplate, appId: String) {
-        this.portType = portType
-        this.restTemplate = restTemplate
-        this.application = appId
-    }
+    private var portType: Class<*>? = portType
+    private var restTemplate: RestTemplate? = restTemplate
+    private var application: String? = appId
 
     private fun getRemoteUrl(): String {
         return "http://$application/localInvoke"

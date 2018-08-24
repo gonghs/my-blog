@@ -18,6 +18,8 @@ abstract class SuperLocalInvokeController:ApplicationContextAware{
     /**
      * 供服务间调用开放的api
      */
+
+    @Suppress("UNCHECKED_CAST")
     @PostMapping("/localInvoke")
     fun invoke(req:HttpServletRequest,resp:HttpServletResponse){
         val result = HashMap<String,Any?>()
@@ -26,14 +28,14 @@ abstract class SuperLocalInvokeController:ApplicationContextAware{
             val obj = SerializeUtils.hessianDeserialize(req.inputStream) as? Map<*, *> ?: throw Exception("请求参数类型不正确")
             //调用本地方法
             val port = Class.forName(obj["class"] as String)
-            val types = obj["paramTypes"] as Class<*>
-            val method = port.getMethod(obj["method"] as String,types)
-            val args = obj["args"] as Array<*>
+            val types = obj["paramTypes"] as? Array<Class<*>> ?: emptyArray()
+            val method = port.getMethod(obj["method"] as String,*types)
+            val args = obj["args"] as? Array<Any> ?: emptyArray()
             log.debug("Begin invoke service " + obj["class"] as String
                     + "." + obj["method"] as String + ", args:"
                     + ArrayUtils.toString(args, "[]"))
             val target = applicationContext!!.getBean(port)
-            result["data"] = method.invoke(target,args)
+            result["data"] = method.invoke(target,*args)
             result["success"] = true
         }catch (e:Exception ){
             result["success"] = false
