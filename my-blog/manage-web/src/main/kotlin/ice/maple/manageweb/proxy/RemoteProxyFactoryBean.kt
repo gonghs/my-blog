@@ -20,6 +20,7 @@ class RemoteProxyFactoryBean : ApplicationContextAware {
     //缓存已建立的代理对象
     private val proxies = HashMap<Class<*>, Any>()
 
+    @SuppressWarnings("UNCHECKED_CAST")
     fun <T> getProxy(intelClass: Class<T>, appId: String?): T {
         if (proxies.containsKey(intelClass)) {
             return proxies[intelClass] as T
