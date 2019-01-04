@@ -1,6 +1,7 @@
 package ice.maple.manageweb.config
 
 import ice.maple.manageservice.service.IHelloService
+import ice.maple.manageservice.service.IUserService
 import ice.maple.manageweb.proxy.RemoteProxyFactoryBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
@@ -18,8 +19,13 @@ open class ServiceConfiguration : WebMvcConfigurer {
     private val proxy: RemoteProxyFactoryBean? = null
 
     @Bean
-    open fun userServiceBean(): IHelloService {
+    open fun helloServiceBean(): IHelloService {
         return proxy!!.getProxy(IHelloService::class.java, null)
+    }
+
+    @Bean
+    open fun userServiceBean(): IUserService {
+        return proxy!!.getProxy(IUserService::class.java, null)
     }
 
     @Bean

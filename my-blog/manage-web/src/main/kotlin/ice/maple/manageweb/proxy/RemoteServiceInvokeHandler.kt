@@ -32,7 +32,7 @@ open class RemoteServiceInvokeHandler(portType: Class<*>, restTemplate: RestTemp
         val resp = restTemplate!!.exchange(getRemoteUrl(),HttpMethod.POST, HttpEntity(postData),ByteArray::class.java)
         if (resp.statusCode != HttpStatus.OK) throw Exception("调用${getRemoteUrl()}返回非正常状态${resp.statusCodeValue}")
         val result = SerializeUtils.hessianDeserialize(resp.body) as Map<*, *>
-        return if (!(result["success"] as Boolean)) throw Exception(result["error"] as String)
+        return if (!(result["success"] as Boolean)) throw Exception(result["error"] as String?)
         else result["data"]
     }
 

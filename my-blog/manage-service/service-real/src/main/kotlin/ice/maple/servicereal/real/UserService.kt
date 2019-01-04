@@ -4,10 +4,11 @@ import ice.maple.manageservice.bo.SysUser
 import ice.maple.manageservice.service.IUserService
 import ice.maple.servicereal.dao.UserDao
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
 
 /**
- * TODO
+ * 用户服务类
  *
  * @author maple
  * @version V1.0
@@ -15,11 +16,12 @@ import org.springframework.stereotype.Service
  */
 
 @Service
-class UserService : IUserService {
+open class UserService : IUserService {
     @Autowired
-    val userDao: UserDao? = null
+    lateinit var userDao: UserDao
 
+    @Cacheable(cacheNames = ["authority"],key = "#name")
     override fun getUserByName(name: String):SysUser? {
-        return userDao?.queryByName(name);
+        return userDao.queryByName(name)
     }
 }

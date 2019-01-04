@@ -23,19 +23,23 @@ import org.springframework.security.crypto.password.PasswordEncoder
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 open class SecurityConfig:WebSecurityConfigurerAdapter(){
 
+    @Autowired
+    private lateinit var myUserDetailsService: MyUserDetailsService
+
     override fun configure(http: HttpSecurity?) {
         super.configure(http)
         http?.let {
-            http.authorizeRequests()
-                    .antMatchers("/", "/index.html").permitAll()
-                    .anyRequest().authenticated()// 其他地址的访问均需验证权限
-                    .and()
-                    .formLogin()
-                    .loginPage("/login.html")
-                    .failureUrl("/login-error.html").permitAll()
-                    .and()
-                    .logout()
-                    .logoutSuccessUrl("/index.html");
+            it.authorizeRequests()
+//                    .antMatchers("/", "/login").permitAll()
+//                    .anyRequest().authenticated()// 其他地址的访问均需验证权限
+//                    .and()
+//                    .formLogin()
+//                    .loginPage("/login").permitAll()
+//                    .successForwardUrl("/index")
+//                    .failureUrl("/login-error").permitAll()
+//                    .and()
+//                    .logout()
+//                    .logoutSuccessUrl("/index");
         }
     }
 
@@ -43,4 +47,10 @@ open class SecurityConfig:WebSecurityConfigurerAdapter(){
     open fun passwordEncoder():PasswordEncoder{
         return BCryptPasswordEncoder();
     }
+}
+
+fun main(args: Array<String>) {
+    val password:String = "123456";
+    val passwordEncoder = BCryptPasswordEncoder(6)
+    println(passwordEncoder.encode(password))
 }

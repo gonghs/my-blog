@@ -1,4 +1,4 @@
-package ice.maple.servicereal.controller
+package ice.maple.servicereal.config
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
 import com.fasterxml.jackson.annotation.PropertyAccessor
@@ -11,7 +11,7 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer
 import org.springframework.data.redis.serializer.StringRedisSerializer
 
 /**
- * TODO
+ * redis 配置类
  *
  * @author maple
  * @version V1.0
@@ -19,6 +19,13 @@ import org.springframework.data.redis.serializer.StringRedisSerializer
  */
 @Configuration
 open class RedisConfig{
+
+    /**
+     * 将redisTemplate格式化为string,any格式
+     *
+     * @param factory redis连接工厂
+     * @return redisTemplate
+     */
     @Bean
     open fun redisTemplate(factory: RedisConnectionFactory):RedisTemplate<String,Any> {
         val template = RedisTemplate<String,Any>()
