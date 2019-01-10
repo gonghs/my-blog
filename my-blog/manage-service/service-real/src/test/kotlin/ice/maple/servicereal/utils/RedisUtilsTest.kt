@@ -41,7 +41,7 @@ class RedisUtilsTest : BaseTest(){
     fun getByAny() {
         val sysUser = SysUser("111", "222", "2222")
         redisUtils.setAny(testKey,sysUser)
-        val retUser = redisUtils.getByKey<SysUser>(testKey)
+        val retUser = redisUtils.getT<SysUser>(testKey)
         println(retUser)
         redisUtils.delete(testKey)
     }
@@ -72,7 +72,7 @@ class RedisUtilsTest : BaseTest(){
     @Test
     fun redisStringTest(){
         redisUtils.setAny(testKey,"100");
-        val returnValue = redisUtils.getByKey<Int>(testKey)
+        val returnValue = redisUtils.getLong(testKey)
         println(returnValue)
     }
 }
