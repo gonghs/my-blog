@@ -10,12 +10,12 @@ import java.io.Serializable
  * @since 2018-12-29 16:27
  */
 
-class SysUser(var code: String, var name: String, var password: String):Serializable {
+data class SysUser(var code: String, var name: String, var password: String):Serializable {
     var roles: Array<SysRole> = emptyArray();
 }
 
-class SysRole(var code: String, var name: String):Serializable {
+data class SysRole(var code: String, var name: String) {
     var permissions: Array<SysPermission> = emptyArray();
 }
 
-class SysPermission(var code: String, var name: String, var url: String):Serializable
+data class SysPermission(var code: String, var name: String, var url: String):Serializable

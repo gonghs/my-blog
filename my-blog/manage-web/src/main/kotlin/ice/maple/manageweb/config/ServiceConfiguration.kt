@@ -8,8 +8,6 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.client.RestTemplate
 import org.springframework.cloud.client.loadbalancer.LoadBalanced
-import org.springframework.core.Ordered
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 
@@ -34,8 +32,8 @@ open class ServiceConfiguration : WebMvcConfigurer {
         return RestTemplate()
     }
 
-    override fun addViewControllers(registry: ViewControllerRegistry) {
-        registry.addViewController("/").setViewName("forward:/index")
-        registry.setOrder(Ordered.HIGHEST_PRECEDENCE)
-    }
+//    override fun addViewControllers(registry: ViewControllerRegistry) {
+//        registry.addViewController("/").setViewName("forward:/index")
+//        registry.setOrder(Ordered.HIGHEST_PRECEDENCE)
+//    }
 }

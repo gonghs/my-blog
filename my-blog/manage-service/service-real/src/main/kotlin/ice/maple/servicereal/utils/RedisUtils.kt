@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component
  */
 
 @Component
-object RedisUtils {
+class RedisUtils {
     @Autowired
     lateinit var redisTemplate: RedisTemplate<String, Any>
 
@@ -28,14 +28,33 @@ object RedisUtils {
     }
 
     /**
+     * 获取普通缓存对象
+     *
+     * @param key 键
+     * @return any 值对象
+     */
+    inline fun <reified T : Any> getByKey(key: String):T? {
+        return  redisTemplate.opsForValue().get(key) as? T
+    }
+
+    /**
      * 存入普通缓存对象
      *
      * @param key 键
      * @param value 值对象
      * @return Boolean 是否成功
      */
-    fun setAny(key:String,value:Any):Boolean {
+    fun setAny(key:String,value:Any) {
         redisTemplate.opsForValue().set(key,value)
-        return true
+    }
+
+    /**
+     * 删除普通缓存对象
+     *
+     * @param key 键
+     * @return Boolean 是否成功
+     */
+    fun delete(key:String):Boolean {
+        return redisTemplate.delete(key)
     }
 }

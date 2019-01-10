@@ -2,7 +2,8 @@ package ice.maple.manageweb.controller
 
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.*
+import javax.servlet.http.HttpServletRequest
 
 /**
  * TODO
@@ -14,14 +15,29 @@ import org.springframework.web.bind.annotation.GetMapping
 @Controller
 class LoginController{
 
-    @GetMapping("/login")
-    fun login():String{
-        return "login.html"
+    @RequestMapping(value= ["/"])
+    fun home(): String{
+        return "home"
     }
 
-    @GetMapping("/login-error")
-    fun loginError(model:Model):String{
-        model.addAttribute("loginError",true)
-        return "login.html"
+    @RequestMapping(value= ["/user"])
+    fun welcome(): String{
+        return "user"
+    }
+
+    @RequestMapping(value= ["/admin"])
+    fun admin(): String{
+        return "admin"
+    }
+
+    @RequestMapping(value= ["/login"])
+    fun login(): String{
+        return "login"
+    }
+
+
+    @RequestMapping(value= ["/403"])
+    fun error403(): String{
+        return "403"
     }
 }

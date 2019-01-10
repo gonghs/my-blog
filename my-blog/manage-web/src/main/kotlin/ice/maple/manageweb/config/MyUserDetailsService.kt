@@ -1,5 +1,6 @@
 package ice.maple.manageweb.config
 
+import ice.maple.manageservice.bo.SysPermission
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -37,9 +38,11 @@ class MyUserDetailsService : UserDetailsService {
         sysUser ?: throw UsernameNotFoundException(username)
         var authorities = mutableListOf<SimpleGrantedAuthority>()
         sysUser.roles.forEach {
-            it.permissions.forEach { it -> authorities.add(SimpleGrantedAuthority(it.code)) }
+            for (permission in it.permissions){
+                authorities.add(SimpleGrantedAuthority(permission.code))
+            }
         }
-        return User(sysUser.name, sysUser.password, authorities)
+        return User.builder().username(sysUser.name).password(sysUser.password).authorities(authorities).roles("admin").build()
     }
 
 }
