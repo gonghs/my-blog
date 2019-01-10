@@ -71,9 +71,8 @@ class RedisUtilsTest : BaseTest(){
 
     @Test
     fun redisStringTest(){
-        val sysUser = SysUser("1","maple","1111")
-        redisTemplate.opsForValue().set("user",sysUser)
-        val user1 = redisTemplate.opsForValue().get("user") as? SysUser
-        log.info("取值成功")
+        redisUtils.setAny(testKey,"100");
+        val returnValue = redisUtils.getByKey<Int>(testKey)
+        println(returnValue)
     }
 }
