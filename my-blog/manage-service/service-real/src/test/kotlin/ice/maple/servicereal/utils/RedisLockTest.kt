@@ -40,13 +40,14 @@ class RedisLockTest : BaseTest(){
         redisUtils.setAny(testRedisKey,"100")
         println("100" == redisUtils.getT<String>(testRedisKey))
         for (i in 0..55){
-            val lock = redisClient.getLock(lockKey)
-            lock.lock(60,TimeUnit.MINUTES)
-            val stock = redisUtils.getT<Int>(testRedisKey)
+            val lock:RLock = redisClient.getLock(lockKey)
+            lock.tryLock(3, 10, TimeUnit.SECONDS)
+            val stock = redisUtils.getInt(testRedisKey)
             if(stock!! > 0){
                 redisUtils.setAny(testRedisKey, value = stock-1)
                 println("stock: $stock-1")
             }
+            lock.unlock()
         }
     }
 }
