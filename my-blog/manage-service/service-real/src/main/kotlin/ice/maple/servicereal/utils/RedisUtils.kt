@@ -17,15 +17,6 @@ class RedisUtils {
     @Autowired
     lateinit var redisTemplate: RedisTemplate<String, Any>
 
-    /**
-     * 获取普通缓存对象
-     *
-     * @param key 键
-     * @return any 值对象
-     */
-    fun getAny(key: String):Any? {
-        return redisTemplate.opsForValue().get(key)
-    }
 
     /**
      * 获取指定缓存对象
@@ -96,5 +87,15 @@ class RedisUtils {
      */
     fun delete(key:String):Boolean {
         return redisTemplate.delete(key)
+    }
+
+    /**
+     * 获取普通缓存对象
+     *
+     * @param key 键
+     * @return any 值对象
+     */
+    private fun getAny(key: String):Any? {
+        return redisTemplate.opsForValue().get(key)
     }
 }
