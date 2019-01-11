@@ -11,11 +11,11 @@ import java.io.Serializable
  */
 
 data class SysUser(var code: String, var name: String, var password: String):Serializable {
-    var roles: Array<SysRole> = emptyArray();
+    var roles: Array<SysRole> = emptyArray()
 }
 
 data class SysRole(var code: String, var name: String) {
-    var permissions: Array<SysPermission> = emptyArray();
+    var permissions: Array<SysPermission> = emptyArray()
 }
 
 data class SysPermission(var code: String, var name: String, var url: String):Serializable
