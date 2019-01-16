@@ -5,7 +5,7 @@ import org.springframework.data.redis.serializer.RedisSerializer
 import java.nio.charset.Charset
 
 /**
- * TODO
+ * 实现redis序列化和反序列化
  *
  * @author maple
  * @version V1.0
@@ -19,7 +19,7 @@ class HessianRedisSerializer<T>(private var clazz: Class<T>) : RedisSerializer<T
 
     override fun deserialize(bt: ByteArray?): T? {
         if(bt == null || bt.isEmpty()) return null
+        @Suppress("UNCHECKED_CAST")
         return SerializeUtils.hessianDeserialize(bt) as? T
     }
-
 }
